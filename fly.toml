@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for trek-montgolifiere-et-citron-vert on 2026-06-18T08:16:31Z
+# fly.toml app configuration file generated for trek-montgolfiere-et-citron-vert on 2026-06-18T08:16:31Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'trek-montgolifiere-et-citron-vert'
+app = 'trek-montgolfiere-et-citron-vert'
 primary_region = 'cdg'
 
 [build]
