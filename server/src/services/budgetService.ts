@@ -105,6 +105,7 @@ export function createBudgetItem(
     currency?: string | null; exchange_rate?: number;
     payers?: { user_id: number; amount: number }[]; member_ids?: number[];
     persons?: number | null; days?: number | null; note?: string | null; expense_date?: string | null;
+    reservation_id?: number | null;
   },
 ) {
   const maxOrder = db.prepare(
@@ -128,7 +129,7 @@ export function createBudgetItem(
   const total = data.payers && data.payers.length > 0 ? payerTotal : (data.total_price || 0);
 
   const result = db.prepare(
-    'INSERT INTO budget_items (trip_id, category, name, total_price, currency, exchange_rate, persons, days, note, sort_order, expense_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    'INSERT INTO budget_items (trip_id, category, name, total_price, currency, exchange_rate, persons, days, note, sort_order, expense_date, reservation_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
   ).run(
     tripId,
     cat,
@@ -141,6 +142,7 @@ export function createBudgetItem(
     data.note || null,
     sortOrder,
     data.expense_date || null,
+    data.reservation_id != null ? data.reservation_id : null,
   );
 
   const itemId = result.lastInsertRowid as number;
@@ -153,6 +155,15 @@ export function createBudgetItem(
   const item = db.prepare('SELECT * FROM budget_items WHERE id = ?').get(itemId) as BudgetItem;
   item.members = loadItemMembers(itemId);
   item.payers = loadItemPayers(itemId);
+  return item;
+}
+
+/** Fetch a single budget item hydrated with its members and payers, scoped to the trip. */
+export function getBudgetItem(id: string | number, tripId: string | number): BudgetItem | null {
+  const item = db.prepare('SELECT * FROM budget_items WHERE id = ? AND trip_id = ?').get(id, tripId) as BudgetItem | undefined;
+  if (!item) return null;
+  item.members = loadItemMembers(id);
+  item.payers = loadItemPayers(id);
   return item;
 }
 
@@ -208,7 +219,15 @@ export function updateBudgetItem(
   );
 
   // Optional inline payer/member replacement (the edit modal saves all at once).
-  if (data.payers !== undefined) writeItemPayers(id, data.payers);
+  if (data.payers !== undefined) {
+    writeItemPayers(id, data.payers);
+    // writeItemPayers derives total_price from the payer sum (0 for no payers).
+    // A "recorded total, nobody assigned" expense clears payers but still carries
+    // an explicit total_price — re-apply it so it isn't clobbered to 0.
+    if (data.payers.length === 0 && data.total_price !== undefined) {
+      db.prepare('UPDATE budget_items SET total_price = ? WHERE id = ?').run(data.total_price, id);
+    }
+  }
   if (data.member_ids !== undefined) {
     db.prepare('DELETE FROM budget_item_members WHERE budget_item_id = ?').run(id);
     const insert = db.prepare('INSERT OR IGNORE INTO budget_item_members (budget_item_id, user_id, paid) VALUES (?, ?, 0)');
@@ -375,11 +394,18 @@ export function calculateSettlement(
   }
 
   // Persisted settle-up transfers already moved money: the payer's debt shrinks,
-  // the receiver's credit shrinks, so the corresponding flow disappears.
+  // the receiver's credit shrinks, so the corresponding flow disappears. A transfer
+  // counts even when neither user has an expense-derived balance yet — a manual
+  // payment, or one left behind after its expense was deleted, then correctly
+  // surfaces as an amount still to square up instead of silently vanishing.
   const settlements = listSettlements(tripId);
+  const ensureSettled = (id: number, username: string | undefined, avatar_url: string | null | undefined) => {
+    if (!balances[id]) balances[id] = { user_id: id, username: username || '', avatar_url: avatar_url ?? null, balance: 0 };
+    return balances[id];
+  };
   for (const s of settlements) {
-    if (balances[s.from_user_id]) balances[s.from_user_id].balance += s.amount;
-    if (balances[s.to_user_id]) balances[s.to_user_id].balance -= s.amount;
+    ensureSettled(s.from_user_id, s.from_username, s.from_avatar_url).balance += s.amount;
+    ensureSettled(s.to_user_id, s.to_username, s.to_avatar_url).balance -= s.amount;
   }
 
   // Calculate optimized payment flows (greedy algorithm)
@@ -449,6 +475,19 @@ export function createSettlement(
     'INSERT INTO budget_settlements (trip_id, from_user_id, to_user_id, amount, created_by_user_id) VALUES (?, ?, ?, ?, ?)'
   ).run(tripId, data.from_user_id, data.to_user_id, Math.round(data.amount * 100) / 100, createdByUserId ?? null);
   return listSettlements(tripId).find(s => s.id === Number(result.lastInsertRowid)) || null;
+}
+
+export function updateSettlement(
+  id: string | number,
+  tripId: string | number,
+  data: { from_user_id: number; to_user_id: number; amount: number },
+) {
+  const row = db.prepare('SELECT id FROM budget_settlements WHERE id = ? AND trip_id = ?').get(id, tripId);
+  if (!row) return null;
+  db.prepare(
+    'UPDATE budget_settlements SET from_user_id = ?, to_user_id = ?, amount = ? WHERE id = ?'
+  ).run(data.from_user_id, data.to_user_id, Math.round(data.amount * 100) / 100, id);
+  return listSettlements(tripId).find(s => s.id === Number(id)) || null;
 }
 
 export function deleteSettlement(id: string | number, tripId: string | number): boolean {

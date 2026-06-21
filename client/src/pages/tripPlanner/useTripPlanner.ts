@@ -18,6 +18,7 @@ import { usePlaceSelection } from '../../hooks/usePlaceSelection'
 import { usePlannerHistory } from '../../hooks/usePlannerHistory'
 import { useAirtrailConnection } from '../../hooks/useAirtrailConnection'
 import type { Accommodation, TripMember, Day, Place, Reservation } from '../../types'
+import { resolvePoolAssignmentId } from './tripPlannerModel'
 
 /**
  * Trip planner page logic — the big one. Owns the trip store wiring, addon
@@ -423,6 +424,16 @@ export function useTripPlanner() {
     }
   }, [editingPlace, editingAssignmentId, tripId, toast, pushUndo])
 
+  // Open the place editor from any entry point (Places pool, inspector, map).
+  // Times live per day-assignment, so when no day is in context resolve the
+  // place's lone assignment to hydrate & persist its times; with 0 or 2+
+  // assignments the time is ambiguous and the modal hides the fields (#1247).
+  const openPlaceEditor = useCallback((place: Place, preferredAssignmentId: number | null = null) => {
+    setEditingPlace(place)
+    setEditingAssignmentId(preferredAssignmentId ?? resolvePoolAssignmentId(assignments, place.id))
+    setShowPlaceForm(true)
+  }, [assignments])
+
   const handleDeletePlace = useCallback((placeId) => {
     setDeletePlaceId(placeId)
   }, [])
@@ -568,7 +579,12 @@ export function useTripPlanner() {
   const handleSaveReservation = async (data: Record<string, string | number | null> & { title: string }) => {
     try {
       if (editingReservation) {
-        const r = await tripActions.updateReservation(tripId, editingReservation.id, { ...data, day_id: selectedDayId || null })
+        // Don't force a day here. The old code pinned it to the (often empty)
+        // selected day, which dropped the booking out of the Plan; preserving the
+        // old day_id instead left it stale when the date changed. Omitting it lets
+        // the server derive the day from the booking's date, or keep the current
+        // one when there is no date.
+        const r = await tripActions.updateReservation(tripId, editingReservation.id, data)
         toast.success(t('trip.toast.reservationUpdated'))
         setShowReservationModal(false)
         setEditingReservation(null)
@@ -685,7 +701,7 @@ export function useTripPlanner() {
     expandedDayIds, setExpandedDayIds, mapPlaces,
     route, routeSegments, routeInfo, setRoute, setRouteInfo, updateRouteForDay,
     handleSelectDay, handlePlaceClick, handleMarkerClick, handleMapClick, handleMapContextMenu, openAddPlaceFromPoi,
-    handleSavePlace, handleDeletePlace, confirmDeletePlace, confirmDeletePlaces,
+    handleSavePlace, openPlaceEditor, handleDeletePlace, confirmDeletePlace, confirmDeletePlaces,
     handleAssignToDay, handleRemoveAssignment, handleReorder, handleReorderDays, handleAddDay, handleUpdateDayTitle,
     handleSaveReservation, handleSaveTransport, handleDeleteReservation,
     selectedPlace, dayOrderMap, dayPlaces,

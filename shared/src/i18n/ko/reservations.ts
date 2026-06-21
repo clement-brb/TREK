@@ -6,8 +6,7 @@ const reservations: TranslationStrings = {
   'reservations.emptyHint': '항공, 호텔 등의 예약을 추가하세요',
   'reservations.add': '예약 추가',
   'reservations.addManual': '직접 예약',
-  'reservations.placeHint':
-    '팁: 예약은 일별 계획과 연결하기 위해 장소에서 직접 만드는 것이 가장 좋습니다.',
+  'reservations.placeHint': '팁: 예약은 일별 계획과 연결하기 위해 장소에서 직접 만드는 것이 가장 좋습니다.',
   'reservations.confirmed': '확정됨',
   'reservations.pending': '대기 중',
   'reservations.summary': '{confirmed}개 확정, {pending}개 대기 중',
@@ -33,8 +32,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': '연결편',
   'reservations.layover.layover': '경유 대기',
   'reservations.needsReview': '검토 필요',
-  'reservations.needsReviewHint':
-    '공항이 자동으로 매칭되지 않았습니다 — 위치를 확인해 주세요.',
+  'reservations.needsReviewHint': '공항이 자동으로 매칭되지 않았습니다 — 위치를 확인해 주세요.',
   'reservations.searchLocation': '역, 항구, 주소 검색…',
   'reservations.meta.trainNumber': '열차 번호',
   'reservations.meta.platform': '플랫폼',
@@ -119,8 +117,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': '시작',
   'reservations.span.end': '종료',
   'reservations.span.ongoing': '진행 중',
-  'reservations.validation.endBeforeStart':
-    '종료 날짜/시간은 시작 날짜/시간 이후여야 합니다',
+  'reservations.validation.endBeforeStart': '종료 날짜/시간은 시작 날짜/시간 이후여야 합니다',
   'reservations.addBooking': '예약 추가',
   'reservations.import.title': '예약 확인서 가져오기',
   'reservations.import.cta': '파일에서 가져오기',
@@ -137,7 +134,8 @@ const reservations: TranslationStrings = {
   'reservations.import.partialFailure': '{created}개 가져옴, {failed}개 실패',
   'reservations.import.error': '분석 실패. 파일이 유효한 예약 확인서인지 확인하세요.',
   'reservations.import.unavailable': '이 서버에서는 예약 가져오기를 사용할 수 없습니다.',
-  'reservations.import.unsupportedFormat': '지원하지 않는 파일 형식입니다. EML, PDF, PKPass, HTML 또는 TXT를 사용하세요.',
+  'reservations.import.unsupportedFormat':
+    '지원하지 않는 파일 형식입니다. EML, PDF, PKPass, HTML 또는 TXT를 사용하세요.',
   'reservations.import.fileTooLarge': '파일 "{name}"이(가) 10 MB 제한을 초과합니다.',
   'reservations.airtrail.title': 'AirTrail에서 가져오기',
   'reservations.airtrail.cta': 'AirTrail',
@@ -156,5 +154,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': '기타 항공편',
   'reservations.airtrail.empty': 'AirTrail 계정에서 항공편을 찾을 수 없습니다.',
   'reservations.airtrail.importCta': '{count}개 가져오기',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

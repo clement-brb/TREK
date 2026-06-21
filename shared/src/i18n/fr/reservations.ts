@@ -3,8 +3,7 @@ import type { TranslationStrings } from '../types';
 const reservations: TranslationStrings = {
   'reservations.title': 'Réservations',
   'reservations.empty': 'Aucune réservation',
-  'reservations.emptyHint':
-    'Ajoutez des réservations pour les vols, hôtels et plus',
+  'reservations.emptyHint': 'Ajoutez des réservations pour les vols, hôtels et plus',
   'reservations.add': 'Ajouter une réservation',
   'reservations.addManual': 'Réservation manuelle',
   'reservations.placeHint':
@@ -65,8 +64,7 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Vélo',
   'reservations.type.taxi': 'Taxi',
   'reservations.type.transport_other': 'Autre',
-  'reservations.confirm.delete':
-    'Voulez-vous vraiment supprimer la réservation « {name} » ?',
+  'reservations.confirm.delete': 'Voulez-vous vraiment supprimer la réservation « {name} » ?',
   'reservations.confirm.deleteTitle': 'Supprimer la réservation ?',
   'reservations.confirm.deleteBody': '« {name} » sera définitivement supprimé.',
   'reservations.toast.updated': 'Réservation mise à jour',
@@ -100,8 +98,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Catégorie budgétaire',
   'reservations.budgetCategoryPlaceholder': 'ex. Transport, Hébergement',
   'reservations.budgetCategoryAuto': 'Auto (selon le type de réservation)',
-  'reservations.budgetHint':
-    "Une entrée budgétaire sera créée automatiquement lors de l'enregistrement.",
+  'reservations.budgetHint': "Une entrée budgétaire sera créée automatiquement lors de l'enregistrement.",
   'reservations.departureDate': 'Départ',
   'reservations.arrivalDate': 'Arrivée',
   'reservations.departureTime': 'Heure dép.',
@@ -122,14 +119,15 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Début',
   'reservations.span.end': 'Fin',
   'reservations.span.ongoing': 'En cours',
-  'reservations.validation.endBeforeStart':
-    'La date/heure de fin doit être postérieure à la date/heure de début',
+  'reservations.validation.endBeforeStart': 'La date/heure de fin doit être postérieure à la date/heure de début',
   'reservations.addBooking': 'Ajouter une réservation',
   'reservations.import.title': 'Importer des confirmations de réservation',
   'reservations.import.cta': 'Importer depuis un fichier',
-  'reservations.import.dropHere': 'Déposez les fichiers de confirmation de réservation ici ou cliquez pour sélectionner',
+  'reservations.import.dropHere':
+    'Déposez les fichiers de confirmation de réservation ici ou cliquez pour sélectionner',
   'reservations.import.dropActive': 'Déposez les fichiers pour importer',
-  'reservations.import.acceptedFormats': "Acceptés : EML, PDF, PKPass, HTML, TXT (max. 10 Mo chacun, jusqu'à 5 fichiers)",
+  'reservations.import.acceptedFormats':
+    "Acceptés : EML, PDF, PKPass, HTML, TXT (max. 10 Mo chacun, jusqu'à 5 fichiers)",
   'reservations.import.parsing': 'Analyse des fichiers…',
   'reservations.import.previewHeading': '{count} réservation(s) trouvée(s)',
   'reservations.import.previewEmpty': "Aucune réservation n'a pu être extraite des fichiers envoyés.",
@@ -138,14 +136,17 @@ const reservations: TranslationStrings = {
   'reservations.import.back': 'Retour',
   'reservations.import.success': '{count} réservation(s) importée(s)',
   'reservations.import.partialFailure': '{created} importée(s), {failed} échouée(s)',
-  'reservations.import.error': 'Analyse échouée. Assurez-vous que le fichier est une confirmation de réservation valide.',
+  'reservations.import.error':
+    'Analyse échouée. Assurez-vous que le fichier est une confirmation de réservation valide.',
   'reservations.import.unavailable': "L'import de réservations n'est pas disponible sur ce serveur.",
-  'reservations.import.unsupportedFormat': 'Format de fichier non pris en charge. Utilisez EML, PDF, PKPass, HTML ou TXT.',
+  'reservations.import.unsupportedFormat':
+    'Format de fichier non pris en charge. Utilisez EML, PDF, PKPass, HTML ou TXT.',
   'reservations.import.fileTooLarge': 'Le fichier « {name} » dépasse la limite de 10 Mo.',
   'reservations.airtrail.title': 'Importer depuis AirTrail',
   'reservations.airtrail.cta': 'AirTrail',
   'reservations.airtrail.synced': 'AirTrail',
-  'reservations.airtrail.syncedHint': 'Synchronisé depuis AirTrail — les modifications restent synchronisées dans les deux sens.',
+  'reservations.airtrail.syncedHint':
+    'Synchronisé depuis AirTrail — les modifications restent synchronisées dans les deux sens.',
   'reservations.airtrail.notSynced': 'Non synchronisé',
   'reservations.airtrail.notSyncedHint': "Ce vol a été supprimé dans AirTrail et n'est plus synchronisé.",
   'reservations.airtrail.loadError': 'Impossible de charger vos vols AirTrail.',
@@ -159,5 +160,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Autres vols',
   'reservations.airtrail.empty': 'Aucun vol trouvé dans votre compte AirTrail.',
   'reservations.airtrail.importCta': 'Importer {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

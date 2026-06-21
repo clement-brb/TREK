@@ -489,7 +489,7 @@ export const addonsApi = {
 
 export const airtrailApi = {
   getSettings: () => apiClient.get('/integrations/airtrail/settings').then(r => r.data),
-  saveSettings: (data: { url: string; apiKey?: string; allowInsecureTls?: boolean }) =>
+  saveSettings: (data: { url: string; apiKey?: string; allowInsecureTls?: boolean; writeEnabled?: boolean }) =>
     apiClient.put('/integrations/airtrail/settings', data).then(r => r.data),
   status: () => apiClient.get('/integrations/airtrail/status').then(r => r.data),
   test: (data: { url?: string; apiKey?: string; allowInsecureTls?: boolean }) =>
@@ -595,6 +595,7 @@ export const budgetApi = {
   perPersonSummary: (tripId: number | string) => apiClient.get(`/trips/${tripId}/budget/summary/per-person`).then(r => r.data),
   settlement: (tripId: number | string, base?: string) => apiClient.get(`/trips/${tripId}/budget/settlement`, base ? { params: { base } } : undefined).then(r => r.data),
   createSettlement: (tripId: number | string, data: { from_user_id: number; to_user_id: number; amount: number }) => apiClient.post(`/trips/${tripId}/budget/settlements`, data).then(r => r.data),
+  updateSettlement: (tripId: number | string, settlementId: number, data: { from_user_id: number; to_user_id: number; amount: number }) => apiClient.put(`/trips/${tripId}/budget/settlements/${settlementId}`, data).then(r => r.data),
   deleteSettlement: (tripId: number | string, settlementId: number) => apiClient.delete(`/trips/${tripId}/budget/settlements/${settlementId}`).then(r => r.data),
   reorderItems: (tripId: number | string, orderedIds: number[]) => apiClient.put(`/trips/${tripId}/budget/reorder/items`, { orderedIds }).then(r => r.data),
   reorderCategories: (tripId: number | string, orderedCategories: string[]) => apiClient.put(`/trips/${tripId}/budget/reorder/categories`, { orderedCategories } satisfies BudgetReorderCategoriesRequest).then(r => r.data),

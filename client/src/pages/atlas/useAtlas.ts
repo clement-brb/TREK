@@ -6,6 +6,7 @@ import apiClient, { mapsApi } from '../../api/client'
 import L from 'leaflet'
 import type { GeoJsonFeatureCollection } from '../../types'
 import { A2_TO_A3, type AtlasData, type CountryDetail, type BucketItem } from './atlasModel'
+import { continentForCountry } from '@trek/shared'
 
 function useCountryNames(language: string): (code: string) => string {
   const [resolver, setResolver] = useState<(code: string) => string>(() => (code: string) => code)
@@ -340,7 +341,10 @@ export function useAtlas() {
               </div>
             </div>`
           layer.bindTooltip(tooltipHtml, {
-            sticky: false, permanent: false, className: 'atlas-tooltip', direction: 'top', offset: [0, -10], opacity: 1
+            // sticky so the tooltip tracks the cursor; non-sticky anchors it at the feature's
+            // bounds centre, which for countries with overseas territories (e.g. France) lands
+            // far out in the ocean instead of over the area being hovered.
+            sticky: true, permanent: false, className: 'atlas-tooltip', direction: 'top', offset: [0, -10], opacity: 1
           })
           layer.on('click', () => {
             if (c.placeCount === 0 && c.tripCount === 0) {
@@ -363,7 +367,7 @@ export function useAtlas() {
             country_layer_by_a2_ref.current[countryCode] = layer
             const name = feature.properties?.NAME || feature.properties?.ADMIN || resolveName(countryCode)
             layer.bindTooltip(`<div style="font-size:12px;font-weight:600">${name}</div>`, {
-              sticky: false, className: 'atlas-tooltip', direction: 'top', offset: [0, -10], opacity: 1
+              sticky: true, className: 'atlas-tooltip', direction: 'top', offset: [0, -10], opacity: 1
             })
             layer.on('click', () => handleMarkCountry(countryCode, name))
             layer.on('mouseover', (e) => {
@@ -552,6 +556,20 @@ export function useAtlas() {
     } catch (e ) {
       console.error('Error fitting bounds', e)
      }
+
+    // Mirror the map-click behaviour so an already-visited country can be removed
+    // straight from search. Tiny countries (Vatican City, Singapore) are hard to
+    // hit on the map, so search was the only way in — but it always opened the
+    // "Mark / Bucket" dialog with no Remove option.
+    const visited = data?.countries.find(c => c.code === country_code)
+    if (visited) {
+      if (visited.placeCount === 0 && visited.tripCount === 0) {
+        handleUnmarkCountry(country_code)
+      } else {
+        loadCountryDetailRef.current(country_code)
+      }
+      return
+    }
     setConfirmAction({ type: 'choose', code: country_code, name: country_label })
   }
 
@@ -565,10 +583,12 @@ export function useAtlas() {
       apiClient.post(`/addons/atlas/country/${code}/mark`).catch(() => {})
       setData(prev => {
         if (!prev || prev.countries.find(c => c.code === code)) return prev
+        const cont = continentForCountry(code)
         return {
           ...prev,
           countries: [...prev.countries, { code, placeCount: 0, tripCount: 0, firstVisit: null, lastVisit: null }],
           stats: { ...prev.stats, totalCountries: prev.stats.totalCountries + 1 },
+          continents: { ...prev.continents, [cont]: (prev.continents?.[cont] || 0) + 1 },
         }
       })
     } else {
@@ -579,10 +599,12 @@ export function useAtlas() {
         if (!prev) return prev
         const c = prev.countries.find(c => c.code === code)
         if (!c || c.placeCount > 0 || c.tripCount > 0) return prev
+        const cont = continentForCountry(code)
         return {
           ...prev,
           countries: prev.countries.filter(c => c.code !== code),
           stats: { ...prev.stats, totalCountries: Math.max(0, prev.stats.totalCountries - 1) },
+          continents: { ...prev.continents, [cont]: Math.max(0, (prev.continents?.[cont] || 0) - 1) },
         }
       })
       setVisitedRegions(prev => {

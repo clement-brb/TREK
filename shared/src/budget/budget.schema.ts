@@ -50,6 +50,35 @@ export const COST_CATEGORIES = [
 export type CostCategory = (typeof COST_CATEGORIES)[number];
 
 /**
+ * Maps a reservation `type` (flight, train, hotel, …) to one of the fixed Costs
+ * categories, so an expense created from a booking lands in the right bucket
+ * instead of a free-text/localized label. Unknown types fall back to `other`.
+ */
+const RESERVATION_TYPE_TO_COST_CATEGORY: Record<string, CostCategory> = {
+  flight: 'flights',
+  plane: 'flights',
+  train: 'transport',
+  bus: 'transport',
+  car: 'transport',
+  'car-rental': 'transport',
+  ferry: 'transport',
+  boat: 'transport',
+  taxi: 'transport',
+  transfer: 'transport',
+  transport: 'transport',
+  hotel: 'accommodation',
+  accommodation: 'accommodation',
+  lodging: 'accommodation',
+  restaurant: 'food',
+  activity: 'activities',
+};
+
+export function typeToCostCategory(type: string | null | undefined): CostCategory {
+  if (!type) return 'other';
+  return RESERVATION_TYPE_TO_COST_CATEGORY[type.trim().toLowerCase()] || 'other';
+}
+
+/**
  * One payer of an expense — a row of budget_item_payers. `amount` is in the
  * expense's own currency (budget_items.currency). Several payers can split who
  * actually paid one bill. Username/avatar are joined for display.
@@ -112,10 +141,11 @@ export const budgetCreateItemRequestSchema = z.object({
   days: z.number().nullable().optional(),
   note: z.string().nullable().optional(),
   expense_date: z.string().nullable().optional(),
+  // Link this expense to a reservation (e.g. created from a booking's
+  // "add expense" flow). The server stores it on budget_items.reservation_id.
+  reservation_id: z.number().optional(),
 });
-export type BudgetCreateItemRequest = z.infer<
-  typeof budgetCreateItemRequestSchema
->;
+export type BudgetCreateItemRequest = z.infer<typeof budgetCreateItemRequestSchema>;
 
 /** Update accepts the same fields plus total_price changes; all optional. */
 export const budgetUpdateItemRequestSchema = z.object({
@@ -131,17 +161,13 @@ export const budgetUpdateItemRequestSchema = z.object({
   note: z.string().nullable().optional(),
   expense_date: z.string().nullable().optional(),
 });
-export type BudgetUpdateItemRequest = z.infer<
-  typeof budgetUpdateItemRequestSchema
->;
+export type BudgetUpdateItemRequest = z.infer<typeof budgetUpdateItemRequestSchema>;
 
 /** Replace the explicit payers of an expense (amounts in expense currency). */
 export const budgetUpdatePayersRequestSchema = z.object({
   payers: z.array(payerInputSchema),
 });
-export type BudgetUpdatePayersRequest = z.infer<
-  typeof budgetUpdatePayersRequestSchema
->;
+export type BudgetUpdatePayersRequest = z.infer<typeof budgetUpdatePayersRequestSchema>;
 
 /**
  * A persisted settle-up transfer (budget_settlements row): "from paid to" a
@@ -168,34 +194,32 @@ export const budgetCreateSettlementRequestSchema = z.object({
   to_user_id: z.number(),
   amount: z.number(),
 });
-export type BudgetCreateSettlementRequest = z.infer<
-  typeof budgetCreateSettlementRequestSchema
->;
+export type BudgetCreateSettlementRequest = z.infer<typeof budgetCreateSettlementRequestSchema>;
+
+/** Edit a persisted settle-up transfer (same fields as create; full replace). */
+export const budgetUpdateSettlementRequestSchema = z.object({
+  from_user_id: z.number(),
+  to_user_id: z.number(),
+  amount: z.number(),
+});
+export type BudgetUpdateSettlementRequest = z.infer<typeof budgetUpdateSettlementRequestSchema>;
 
 export const budgetUpdateMembersRequestSchema = z.object({
   user_ids: z.array(z.number()),
 });
-export type BudgetUpdateMembersRequest = z.infer<
-  typeof budgetUpdateMembersRequestSchema
->;
+export type BudgetUpdateMembersRequest = z.infer<typeof budgetUpdateMembersRequestSchema>;
 
 export const budgetToggleMemberPaidRequestSchema = z.object({
   paid: z.boolean(),
 });
-export type BudgetToggleMemberPaidRequest = z.infer<
-  typeof budgetToggleMemberPaidRequestSchema
->;
+export type BudgetToggleMemberPaidRequest = z.infer<typeof budgetToggleMemberPaidRequestSchema>;
 
 export const budgetReorderItemsRequestSchema = z.object({
   orderedIds: z.array(z.number()),
 });
-export type BudgetReorderItemsRequest = z.infer<
-  typeof budgetReorderItemsRequestSchema
->;
+export type BudgetReorderItemsRequest = z.infer<typeof budgetReorderItemsRequestSchema>;
 
 export const budgetReorderCategoriesRequestSchema = z.object({
   orderedCategories: z.array(z.string()),
 });
-export type BudgetReorderCategoriesRequest = z.infer<
-  typeof budgetReorderCategoriesRequestSchema
->;
+export type BudgetReorderCategoriesRequest = z.infer<typeof budgetReorderCategoriesRequestSchema>;

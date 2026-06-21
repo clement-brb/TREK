@@ -11,7 +11,7 @@ function airportCode(a: AirtrailAirport | null): string | null {
  * Airline/aircraft arrive as joined objects ({icao, iata, name, ...}); reduce
  * them to a single code (ICAO preferred, matching AirTrail's save shape).
  */
-function entityCode(e: AirtrailNamedCode | null | undefined): string | null {
+export function entityCode(e: AirtrailNamedCode | null | undefined): string | null {
   return e?.icao || e?.iata || null;
 }
 
@@ -55,8 +55,8 @@ export function normalizeFlight(raw: AirtrailFlightRaw): AirtrailFlight {
     toCode: airportCode(raw.to),
     toName: raw.to?.name ?? null,
     date: raw.date ?? null,
-    departure: raw.departure ?? null,
-    arrival: raw.arrival ?? null,
+    departure: raw.departureScheduled ?? null,
+    arrival: raw.arrivalScheduled ?? null,
     airline: entityCode(raw.airline),
     flightNumber: raw.flightNumber ?? null,
     aircraft: entityCode(raw.aircraft),
@@ -94,14 +94,17 @@ function hasCoords(a: AirtrailAirport | null): a is AirtrailAirport & { lat: num
 
 /** Raw AirTrail flight → the data createReservation() expects (type:'flight'). */
 export function mapFlightToReservation(raw: AirtrailFlightRaw): MappedReservation {
-  const dep = localParts(raw.departure, raw.from?.tz ?? null);
-  const arr = localParts(raw.arrival, raw.to?.tz ?? null);
+  // Read the SCHEDULED times only — TREK plans against the scheduled (booked) time,
+  // not the actual/estimated `departure`/`arrival`. When a flight has no scheduled
+  // time, the clock is left blank (date preserved) rather than fabricated.
+  const dep = localParts(raw.departureScheduled, raw.from?.tz ?? null);
+  const arr = localParts(raw.arrivalScheduled, raw.to?.tz ?? null);
 
   const fromCode = airportCode(raw.from);
   const toCode = airportCode(raw.to);
   const datePrefix = raw.date || dep.date;
-  const reservation_time = datePrefix ? `${datePrefix}T${dep.time ?? '00:00'}` : null;
-  const reservation_end_time = arr.date ? `${arr.date}T${arr.time ?? '00:00'}` : null;
+  const reservation_time = dep.date && dep.time ? `${dep.date}T${dep.time}` : (datePrefix ?? null);
+  const reservation_end_time = arr.date && arr.time ? `${arr.date}T${arr.time}` : null;
 
   const endpoints: MappedEndpoint[] = [];
   let needsReview = raw.datePrecision && raw.datePrecision !== 'day' ? 1 : 0;
@@ -147,7 +150,7 @@ export function mapFlightToReservation(raw: AirtrailFlightRaw): MappedReservatio
   if (aircraftCode) metadata.aircraft = aircraftCode;
   if (raw.aircraftReg) metadata.aircraft_reg = raw.aircraftReg;
   if (raw.flightReason) metadata.flight_reason = raw.flightReason;
-  if (seat?.seatNumber || seat?.seatClass) metadata.seat = seat.seatNumber || seat.seatClass;
+  if (seat?.seatNumber) metadata.seat = seat.seatNumber;
 
   // The flight number already carries the airline prefix (e.g. "SAS983"), so it
   // makes the clearest title; fall back to the route.
@@ -178,8 +181,8 @@ export function canonicalHash(raw: AirtrailFlightRaw): string {
     to: airportCode(raw.to),
     date: raw.date ?? null,
     datePrecision: raw.datePrecision ?? 'day',
-    departure: raw.departure ?? null,
-    arrival: raw.arrival ?? null,
+    departureScheduled: raw.departureScheduled ?? null,
+    arrivalScheduled: raw.arrivalScheduled ?? null,
     airline: entityCode(raw.airline),
     flightNumber: raw.flightNumber ?? null,
     aircraft: entityCode(raw.aircraft),

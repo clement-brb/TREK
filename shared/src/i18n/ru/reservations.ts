@@ -3,12 +3,10 @@ import type { TranslationStrings } from '../types';
 const reservations: TranslationStrings = {
   'reservations.title': 'Бронирования',
   'reservations.empty': 'Пока нет бронирований',
-  'reservations.emptyHint':
-    'Добавьте бронирования на авиабилеты, отели и другое',
+  'reservations.emptyHint': 'Добавьте бронирования на авиабилеты, отели и другое',
   'reservations.add': 'Добавить бронирование',
   'reservations.addManual': 'Ручное бронирование',
-  'reservations.placeHint':
-    'Совет: бронирования лучше создавать прямо из места, чтобы связать их с планом дня.',
+  'reservations.placeHint': 'Совет: бронирования лучше создавать прямо из места, чтобы связать их с планом дня.',
   'reservations.confirmed': 'Подтверждено',
   'reservations.pending': 'Ожидание',
   'reservations.summary': '{confirmed} подтв., {pending} ожид.',
@@ -34,8 +32,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'Стыковка',
   'reservations.layover.layover': 'Пересадка',
   'reservations.needsReview': 'Проверить',
-  'reservations.needsReviewHint':
-    'Аэропорт не удалось определить автоматически — подтвердите местоположение.',
+  'reservations.needsReviewHint': 'Аэропорт не удалось определить автоматически — подтвердите местоположение.',
   'reservations.searchLocation': 'Искать станцию, порт, адрес...',
   'reservations.meta.trainNumber': 'Номер поезда',
   'reservations.meta.platform': 'Платформа',
@@ -65,8 +62,7 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Велосипед',
   'reservations.type.taxi': 'Такси',
   'reservations.type.transport_other': 'Другое',
-  'reservations.confirm.delete':
-    'Вы уверены, что хотите удалить бронирование «{name}»?',
+  'reservations.confirm.delete': 'Вы уверены, что хотите удалить бронирование «{name}»?',
   'reservations.confirm.deleteTitle': 'Удалить бронирование?',
   'reservations.confirm.deleteBody': '«{name}» будет удалено навсегда.',
   'reservations.toast.updated': 'Бронирование обновлено',
@@ -100,8 +96,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Категория бюджета',
   'reservations.budgetCategoryPlaceholder': 'напр. Транспорт, Проживание',
   'reservations.budgetCategoryAuto': 'Авто (по типу бронирования)',
-  'reservations.budgetHint':
-    'При сохранении будет автоматически создана запись бюджета.',
+  'reservations.budgetHint': 'При сохранении будет автоматически создана запись бюджета.',
   'reservations.departureDate': 'Вылет',
   'reservations.arrivalDate': 'Прилёт',
   'reservations.departureTime': 'Время вылета',
@@ -122,8 +117,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Начало',
   'reservations.span.end': 'Конец',
   'reservations.span.ongoing': 'Продолжается',
-  'reservations.validation.endBeforeStart':
-    'Дата/время окончания должны быть позже даты/времени начала',
+  'reservations.validation.endBeforeStart': 'Дата/время окончания должны быть позже даты/времени начала',
   'reservations.addBooking': 'Добавить бронирование',
   'reservations.import.title': 'Импорт подтверждений бронирования',
   'reservations.import.cta': 'Импортировать из файла',
@@ -138,7 +132,8 @@ const reservations: TranslationStrings = {
   'reservations.import.back': 'Назад',
   'reservations.import.success': '{count} бронирование(й) импортировано',
   'reservations.import.partialFailure': '{created} импортировано, {failed} не удалось',
-  'reservations.import.error': 'Обработка не удалась. Убедитесь, что файл является действительным подтверждением бронирования.',
+  'reservations.import.error':
+    'Обработка не удалась. Убедитесь, что файл является действительным подтверждением бронирования.',
   'reservations.import.unavailable': 'Импорт бронирований недоступен на этом сервере.',
   'reservations.import.unsupportedFormat': 'Неподдерживаемый формат файла. Используйте EML, PDF, PKPass, HTML или TXT.',
   'reservations.import.fileTooLarge': 'Файл «{name}» превышает ограничение в 10 МБ.',
@@ -159,5 +154,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Другие рейсы',
   'reservations.airtrail.empty': 'В вашей учётной записи AirTrail не найдено рейсов.',
   'reservations.airtrail.importCta': 'Импортировать {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

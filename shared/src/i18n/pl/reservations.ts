@@ -52,8 +52,7 @@ const reservations: TranslationStrings = {
   'reservations.type.train': 'Pociąg',
   'reservations.type.car': 'Samochód',
   'reservations.needsReview': 'Sprawdź',
-  'reservations.needsReviewHint':
-    'Nie udało się automatycznie dopasować lotniska — potwierdź lokalizację.',
+  'reservations.needsReviewHint': 'Nie udało się automatycznie dopasować lotniska — potwierdź lokalizację.',
   'reservations.searchLocation': 'Szukaj stacji, portu, adresu...',
   'reservations.type.cruise': 'Rejs',
   'reservations.type.event': 'Wydarzenie',
@@ -64,11 +63,9 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Rower',
   'reservations.type.taxi': 'Taksówka',
   'reservations.type.transport_other': 'Inne',
-  'reservations.confirm.delete':
-    'Czy na pewno chcesz usunąć rezerwację "{name}"?',
+  'reservations.confirm.delete': 'Czy na pewno chcesz usunąć rezerwację "{name}"?',
   'reservations.confirm.deleteTitle': 'Usunąć rezerwację?',
-  'reservations.confirm.deleteBody':
-    'Rezerwacja "{name}" zostanie trwale usunięta.',
+  'reservations.confirm.deleteBody': 'Rezerwacja "{name}" zostanie trwale usunięta.',
   'reservations.toast.updated': 'Rezerwacja została zaktualizowana',
   'reservations.toast.removed': 'Rezerwacja została usunięta',
   'reservations.toast.fileUploaded': 'Plik został przesłany',
@@ -100,8 +97,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Kategoria budżetu',
   'reservations.budgetCategoryPlaceholder': 'np. Transport, Zakwaterowanie',
   'reservations.budgetCategoryAuto': 'Auto (na podstawie typu rezerwacji)',
-  'reservations.budgetHint':
-    'Wpis budżetowy zostanie automatycznie utworzony podczas zapisywania.',
+  'reservations.budgetHint': 'Wpis budżetowy zostanie automatycznie utworzony podczas zapisywania.',
   'reservations.departureDate': 'Wylot',
   'reservations.arrivalDate': 'Przylot',
   'reservations.departureTime': 'Godz. wylotu',
@@ -122,8 +118,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Start',
   'reservations.span.end': 'Koniec',
   'reservations.span.ongoing': 'W trakcie',
-  'reservations.validation.endBeforeStart':
-    'Data/godzina zakończenia musi być późniejsza niż data/godzina rozpoczęcia',
+  'reservations.validation.endBeforeStart': 'Data/godzina zakończenia musi być późniejsza niż data/godzina rozpoczęcia',
   'reservations.addBooking': 'Dodaj rezerwację',
   'reservations.import.title': 'Importuj potwierdzenia rezerwacji',
   'reservations.import.cta': 'Importuj z pliku',
@@ -138,7 +133,8 @@ const reservations: TranslationStrings = {
   'reservations.import.back': 'Wstecz',
   'reservations.import.success': 'Zaimportowano {count} rezerwację/rezerwacje',
   'reservations.import.partialFailure': '{created} zaimportowano, {failed} nieudane',
-  'reservations.import.error': 'Przetwarzanie nieudane. Upewnij się, że plik jest prawidłowym potwierdzeniem rezerwacji.',
+  'reservations.import.error':
+    'Przetwarzanie nieudane. Upewnij się, że plik jest prawidłowym potwierdzeniem rezerwacji.',
   'reservations.import.unavailable': 'Import rezerwacji nie jest dostępny na tym serwerze.',
   'reservations.import.unsupportedFormat': 'Nieobsługiwany format pliku. Użyj EML, PDF, PKPass, HTML lub TXT.',
   'reservations.import.fileTooLarge': 'Plik „{name}" przekracza limit 10 MB.',
@@ -159,5 +155,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Inne loty',
   'reservations.airtrail.empty': 'Nie znaleziono lotów na Twoim koncie AirTrail.',
   'reservations.airtrail.importCta': 'Importuj {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

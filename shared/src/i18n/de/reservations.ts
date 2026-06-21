@@ -3,8 +3,7 @@ import type { TranslationStrings } from '../types';
 const reservations: TranslationStrings = {
   'reservations.title': 'Buchungen',
   'reservations.empty': 'Keine Reservierungen vorhanden',
-  'reservations.emptyHint':
-    'Füge Reservierungen für Flüge, Hotels und mehr hinzu',
+  'reservations.emptyHint': 'Füge Reservierungen für Flüge, Hotels und mehr hinzu',
   'reservations.add': 'Reservierung hinzufügen',
   'reservations.addManual': 'Manuelle Buchung',
   'reservations.placeHint':
@@ -34,8 +33,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'Anschlussflug',
   'reservations.layover.layover': 'Zwischenstopp',
   'reservations.needsReview': 'Prüfen',
-  'reservations.needsReviewHint':
-    'Flughafen konnte nicht automatisch erkannt werden — bitte Ort bestätigen.',
+  'reservations.needsReviewHint': 'Flughafen konnte nicht automatisch erkannt werden — bitte Ort bestätigen.',
   'reservations.searchLocation': 'Bahnhof, Hafen, Adresse suchen…',
   'reservations.meta.trainNumber': 'Zugnr.',
   'reservations.meta.platform': 'Gleis',
@@ -65,8 +63,7 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Fahrrad',
   'reservations.type.taxi': 'Taxi',
   'reservations.type.transport_other': 'Sonstiges',
-  'reservations.confirm.delete':
-    'Möchtest du die Reservierung "{name}" wirklich löschen?',
+  'reservations.confirm.delete': 'Möchtest du die Reservierung "{name}" wirklich löschen?',
   'reservations.confirm.deleteTitle': 'Buchung löschen?',
   'reservations.confirm.deleteBody': '"{name}" wird unwiderruflich gelöscht.',
   'reservations.toast.updated': 'Reservierung aktualisiert',
@@ -100,8 +97,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Budgetkategorie',
   'reservations.budgetCategoryPlaceholder': 'z.B. Transport, Unterkunft',
   'reservations.budgetCategoryAuto': 'Auto (aus Buchungstyp)',
-  'reservations.budgetHint':
-    'Beim Speichern wird automatisch ein Budgeteintrag erstellt.',
+  'reservations.budgetHint': 'Beim Speichern wird automatisch ein Budgeteintrag erstellt.',
   'reservations.departureDate': 'Abflug',
   'reservations.arrivalDate': 'Ankunft',
   'reservations.departureTime': 'Abflugzeit',
@@ -122,14 +118,14 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Start',
   'reservations.span.end': 'Ende',
   'reservations.span.ongoing': 'Laufend',
-  'reservations.validation.endBeforeStart':
-    'Enddatum/-zeit muss nach dem Startdatum/-zeit liegen',
+  'reservations.validation.endBeforeStart': 'Enddatum/-zeit muss nach dem Startdatum/-zeit liegen',
   'reservations.addBooking': 'Buchung hinzufügen',
   'reservations.import.title': 'Buchungsbestätigungen importieren',
   'reservations.import.cta': 'Aus Datei importieren',
   'reservations.import.dropHere': 'Buchungsbestätigungsdateien hier ablegen oder klicken zum Auswählen',
   'reservations.import.dropActive': 'Dateien zum Importieren ablegen',
-  'reservations.import.acceptedFormats': 'Akzeptiert: EML, PDF, PKPass, HTML, TXT (max. 10 MB pro Datei, bis zu 5 Dateien)',
+  'reservations.import.acceptedFormats':
+    'Akzeptiert: EML, PDF, PKPass, HTML, TXT (max. 10 MB pro Datei, bis zu 5 Dateien)',
   'reservations.import.parsing': 'Dateien werden verarbeitet…',
   'reservations.import.previewHeading': '{count} Reservierung(en) gefunden',
   'reservations.import.previewEmpty': 'Aus den hochgeladenen Dateien konnten keine Reservierungen extrahiert werden.',
@@ -138,9 +134,11 @@ const reservations: TranslationStrings = {
   'reservations.import.back': 'Zurück',
   'reservations.import.success': '{count} Reservierung(en) importiert',
   'reservations.import.partialFailure': '{created} importiert, {failed} fehlgeschlagen',
-  'reservations.import.error': 'Verarbeitung fehlgeschlagen. Stellen Sie sicher, dass die Datei eine gültige Buchungsbestätigung ist.',
+  'reservations.import.error':
+    'Verarbeitung fehlgeschlagen. Stellen Sie sicher, dass die Datei eine gültige Buchungsbestätigung ist.',
   'reservations.import.unavailable': 'Buchungsimport ist auf diesem Server nicht verfügbar.',
-  'reservations.import.unsupportedFormat': 'Nicht unterstütztes Dateiformat. Verwenden Sie EML, PDF, PKPass, HTML oder TXT.',
+  'reservations.import.unsupportedFormat':
+    'Nicht unterstütztes Dateiformat. Verwenden Sie EML, PDF, PKPass, HTML oder TXT.',
   'reservations.import.fileTooLarge': 'Datei „{name}" überschreitet das 10-MB-Limit.',
   'reservations.airtrail.title': 'Aus AirTrail importieren',
   'reservations.airtrail.cta': 'AirTrail',
@@ -159,5 +157,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Weitere Flüge',
   'reservations.airtrail.empty': 'Keine Flüge in Ihrem AirTrail-Konto gefunden.',
   'reservations.airtrail.importCta': '{count} importieren',
+  'reservations.costsLabel': 'Kosten',
+  'reservations.createExpense': 'Ausgabe erstellen',
+  'reservations.createExpenseHint': 'Speichert die Buchung und öffnet dann den Kosten-Editor.',
+  'reservations.linkedExpense': 'Verknüpfte Ausgabe',
+  'reservations.removeExpense': 'Ausgabe entfernen',
 };
 export default reservations;

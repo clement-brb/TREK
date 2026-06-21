@@ -6,8 +6,7 @@ const reservations: TranslationStrings = {
   'reservations.emptyHint': 'Додайте бронювання на авіаквитки, готелі та інше',
   'reservations.add': 'Додати бронювання',
   'reservations.addManual': 'Ручне бронювання',
-  'reservations.placeHint':
-    'Порада: бронювання краще створювати безпосередньо з місця, щоб пов’язати їх з планом дня.',
+  'reservations.placeHint': 'Порада: бронювання краще створювати безпосередньо з місця, щоб пов’язати їх з планом дня.',
   'reservations.confirmed': 'Підтверджено',
   'reservations.pending': 'Очікування',
   'reservations.summary': '{confirmed} підтвр., {pending} очікувань',
@@ -33,8 +32,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'Пересадка',
   'reservations.layover.layover': 'Очікування',
   'reservations.needsReview': 'Перевірити',
-  'reservations.needsReviewHint':
-    'Аеропорт не вдалося визначити автоматично — підтвердіть місцезнаходження.',
+  'reservations.needsReviewHint': 'Аеропорт не вдалося визначити автоматично — підтвердіть місцезнаходження.',
   'reservations.searchLocation': 'Шукати станцію, порт, адресу...',
   'reservations.meta.trainNumber': 'Номер поїзда',
   'reservations.meta.platform': 'Платформа',
@@ -64,8 +62,7 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Велосипед',
   'reservations.type.taxi': 'Таксі',
   'reservations.type.transport_other': 'Інше',
-  'reservations.confirm.delete':
-    'Ви впевнені, що хочете видалити бронювання «{name}»?',
+  'reservations.confirm.delete': 'Ви впевнені, що хочете видалити бронювання «{name}»?',
   'reservations.confirm.deleteTitle': 'Видалити бронювання?',
   'reservations.confirm.deleteBody': '«{name}» буде видалено назавжди.',
   'reservations.toast.updated': 'Бронювання оновлено',
@@ -75,8 +72,7 @@ const reservations: TranslationStrings = {
   'reservations.newTitle': 'Нове бронювання',
   'reservations.bookingType': 'Тип бронювання',
   'reservations.titleLabel': 'Назва',
-  'reservations.titlePlaceholder':
-    'наприклад, Lufthansa LH123, Hotel Adlon, ...',
+  'reservations.titlePlaceholder': 'наприклад, Lufthansa LH123, Hotel Adlon, ...',
   'reservations.locationAddress': 'Місцезнаходження / Адреса',
   'reservations.locationPlaceholder': 'Адреса, аеропорт, готель...',
   'reservations.confirmationCode': 'Код бронювання',
@@ -100,8 +96,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Категорія бюджету',
   'reservations.budgetCategoryPlaceholder': 'наприклад, Транспорт, Проживання',
   'reservations.budgetCategoryAuto': 'Авто (за типом бронювання)',
-  'reservations.budgetHint':
-    'При збереженні буде автоматично створено запис бюджету.',
+  'reservations.budgetHint': 'При збереженні буде автоматично створено запис бюджету.',
   'reservations.departureDate': 'Виліт',
   'reservations.arrivalDate': 'Приліт',
   'reservations.departureTime': 'Час вильоту',
@@ -122,8 +117,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Початок',
   'reservations.span.end': 'Кінець',
   'reservations.span.ongoing': 'Триває',
-  'reservations.validation.endBeforeStart':
-    'Дата/час закінчення повинен бути пізніше дати/часу початку',
+  'reservations.validation.endBeforeStart': 'Дата/час закінчення повинен бути пізніше дати/часу початку',
   'reservations.addBooking': 'Добавить бронирование',
   'reservations.import.title': 'Імпорт підтверджень бронювання',
   'reservations.import.cta': 'Імпортувати з файлу',
@@ -140,7 +134,8 @@ const reservations: TranslationStrings = {
   'reservations.import.partialFailure': '{created} імпортовано, {failed} не вдалося',
   'reservations.import.error': 'Обробка не вдалася. Переконайтесь, що файл є дійсним підтвердженням бронювання.',
   'reservations.import.unavailable': 'Імпорт бронювань недоступний на цьому сервері.',
-  'reservations.import.unsupportedFormat': 'Непідтримуваний формат файлу. Використовуйте EML, PDF, PKPass, HTML або TXT.',
+  'reservations.import.unsupportedFormat':
+    'Непідтримуваний формат файлу. Використовуйте EML, PDF, PKPass, HTML або TXT.',
   'reservations.import.fileTooLarge': 'Файл «{name}» перевищує обмеження в 10 МБ.',
   'reservations.airtrail.title': 'Імпорт з AirTrail',
   'reservations.airtrail.cta': 'AirTrail',
@@ -159,5 +154,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Інші рейси',
   'reservations.airtrail.empty': 'У вашому акаунті AirTrail не знайдено рейсів.',
   'reservations.airtrail.importCta': 'Імпортувати {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

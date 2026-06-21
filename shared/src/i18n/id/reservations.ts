@@ -3,8 +3,7 @@ import type { TranslationStrings } from '../types';
 const reservations: TranslationStrings = {
   'reservations.title': 'Pemesanan',
   'reservations.empty': 'Belum ada reservasi',
-  'reservations.emptyHint':
-    'Tambahkan reservasi untuk penerbangan, hotel, dan lainnya',
+  'reservations.emptyHint': 'Tambahkan reservasi untuk penerbangan, hotel, dan lainnya',
   'reservations.add': 'Tambah Reservasi',
   'reservations.addManual': 'Pemesanan Manual',
   'reservations.placeHint':
@@ -34,8 +33,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'Sambungan',
   'reservations.layover.layover': 'Transit',
   'reservations.needsReview': 'Tinjau',
-  'reservations.needsReviewHint':
-    'Bandara tidak dapat dicocokkan otomatis — konfirmasi lokasi.',
+  'reservations.needsReviewHint': 'Bandara tidak dapat dicocokkan otomatis — konfirmasi lokasi.',
   'reservations.searchLocation': 'Cari stasiun, pelabuhan, alamat...',
   'reservations.meta.trainNumber': 'No. Kereta',
   'reservations.meta.platform': 'Peron',
@@ -99,8 +97,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Kategori anggaran',
   'reservations.budgetCategoryPlaceholder': 'mis. Transportasi, Akomodasi',
   'reservations.budgetCategoryAuto': 'Otomatis (dari jenis pemesanan)',
-  'reservations.budgetHint':
-    'Entri anggaran akan dibuat otomatis saat menyimpan.',
+  'reservations.budgetHint': 'Entri anggaran akan dibuat otomatis saat menyimpan.',
   'reservations.departureDate': 'Keberangkatan',
   'reservations.arrivalDate': 'Kedatangan',
   'reservations.departureTime': 'Waktu berangkat',
@@ -121,8 +118,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Mulai',
   'reservations.span.end': 'Selesai',
   'reservations.span.ongoing': 'Berlangsung',
-  'reservations.validation.endBeforeStart':
-    'Tanggal/waktu selesai harus setelah tanggal/waktu mulai',
+  'reservations.validation.endBeforeStart': 'Tanggal/waktu selesai harus setelah tanggal/waktu mulai',
   'reservations.addBooking': 'Tambah pemesanan',
   'reservations.import.title': 'Impor konfirmasi pemesanan',
   'reservations.import.cta': 'Impor dari file',
@@ -158,5 +154,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Penerbangan lain',
   'reservations.airtrail.empty': 'Tidak ada penerbangan ditemukan di akun AirTrail-mu.',
   'reservations.airtrail.importCta': 'Impor {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

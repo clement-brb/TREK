@@ -6,8 +6,7 @@ const reservations: TranslationStrings = {
   'reservations.emptyHint': '添加航班、酒店等预订信息',
   'reservations.add': '添加预订',
   'reservations.addManual': '手动添加',
-  'reservations.placeHint':
-    '提示：建议从地点直接创建预订，以便与日程计划关联。',
+  'reservations.placeHint': '提示：建议从地点直接创建预订，以便与日程计划关联。',
   'reservations.confirmed': '已确认',
   'reservations.pending': '待确认',
   'reservations.summary': '{confirmed} 已确认，{pending} 待确认',
@@ -118,8 +117,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': '开始',
   'reservations.span.end': '结束',
   'reservations.span.ongoing': '进行中',
-  'reservations.validation.endBeforeStart':
-    '结束日期/时间必须晚于开始日期/时间',
+  'reservations.validation.endBeforeStart': '结束日期/时间必须晚于开始日期/时间',
   'reservations.addBooking': '添加预订',
   'reservations.import.title': '导入预订确认',
   'reservations.import.cta': '从文件导入',
@@ -155,5 +153,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': '其他航班',
   'reservations.airtrail.empty': '您的 AirTrail 账户中未找到航班。',
   'reservations.airtrail.importCta': '导入 {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

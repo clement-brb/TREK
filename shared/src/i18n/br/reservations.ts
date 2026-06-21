@@ -6,8 +6,7 @@ const reservations: TranslationStrings = {
   'reservations.emptyHint': 'Adicione reservas de voos, hotéis e mais',
   'reservations.add': 'Adicionar reserva',
   'reservations.addManual': 'Reserva manual',
-  'reservations.placeHint':
-    'Dica: o ideal é criar reservas a partir de um lugar para vinculá-las ao plano do dia.',
+  'reservations.placeHint': 'Dica: o ideal é criar reservas a partir de um lugar para vinculá-las ao plano do dia.',
   'reservations.confirmed': 'Confirmada',
   'reservations.pending': 'Pendente',
   'reservations.summary': '{confirmed} confirmada(s), {pending} pendente(s)',
@@ -33,8 +32,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'Conexão',
   'reservations.layover.layover': 'Escala',
   'reservations.needsReview': 'Verificar',
-  'reservations.needsReviewHint':
-    'Aeroporto não pôde ser identificado automaticamente — confirme o local.',
+  'reservations.needsReviewHint': 'Aeroporto não pôde ser identificado automaticamente — confirme o local.',
   'reservations.searchLocation': 'Buscar estação, porto, endereço...',
   'reservations.meta.trainNumber': 'Nº do trem',
   'reservations.meta.platform': 'Plataforma',
@@ -64,8 +62,7 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Bicicleta',
   'reservations.type.taxi': 'Táxi',
   'reservations.type.transport_other': 'Outro',
-  'reservations.confirm.delete':
-    'Tem certeza de que deseja excluir a reserva "{name}"?',
+  'reservations.confirm.delete': 'Tem certeza de que deseja excluir a reserva "{name}"?',
   'reservations.confirm.deleteTitle': 'Excluir reserva?',
   'reservations.confirm.deleteBody': '"{name}" será excluído permanentemente.',
   'reservations.toast.updated': 'Reserva atualizada',
@@ -99,8 +96,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Categoria de orçamento',
   'reservations.budgetCategoryPlaceholder': 'ex. Transporte, Acomodação',
   'reservations.budgetCategoryAuto': 'Automático (pelo tipo de reserva)',
-  'reservations.budgetHint':
-    'Uma entrada de orçamento será criada automaticamente ao salvar.',
+  'reservations.budgetHint': 'Uma entrada de orçamento será criada automaticamente ao salvar.',
   'reservations.departureDate': 'Partida',
   'reservations.arrivalDate': 'Chegada',
   'reservations.departureTime': 'Hora partida',
@@ -121,8 +117,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Início',
   'reservations.span.end': 'Fim',
   'reservations.span.ongoing': 'Em andamento',
-  'reservations.validation.endBeforeStart':
-    'A data/hora final deve ser posterior à data/hora inicial',
+  'reservations.validation.endBeforeStart': 'A data/hora final deve ser posterior à data/hora inicial',
   'reservations.addBooking': 'Adicionar reserva',
   'reservations.import.title': 'Importar confirmações de reserva',
   'reservations.import.cta': 'Importar de arquivo',
@@ -144,7 +139,8 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.title': 'Importar do AirTrail',
   'reservations.airtrail.cta': 'AirTrail',
   'reservations.airtrail.synced': 'AirTrail',
-  'reservations.airtrail.syncedHint': 'Sincronizado do AirTrail — as edições permanecem em sincronia nos dois sentidos.',
+  'reservations.airtrail.syncedHint':
+    'Sincronizado do AirTrail — as edições permanecem em sincronia nos dois sentidos.',
   'reservations.airtrail.notSynced': 'Não sincronizado',
   'reservations.airtrail.notSyncedHint': 'Este voo foi removido no AirTrail e não sincroniza mais.',
   'reservations.airtrail.loadError': 'Não foi possível carregar seus voos do AirTrail.',
@@ -158,5 +154,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Outros voos',
   'reservations.airtrail.empty': 'Nenhum voo encontrado na sua conta do AirTrail.',
   'reservations.airtrail.importCta': 'Importar {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

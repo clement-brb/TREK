@@ -1160,10 +1160,13 @@ describe('TripPlannerPage', () => {
   });
 
   describe('FE-PAGE-PLANNER-041: handleSaveReservation edit path covers update reservation', () => {
-    it('calls onEdit then onSave on ReservationModal to exercise the edit-reservation handler', async () => {
+    it('does not force a day_id on edit so the server keeps/derives it (#1237)', async () => {
       vi.useFakeTimers();
 
       seedTripStore({ id: 42 });
+      // Capture the update payload — tripActions is a snapshot of the store at mount.
+      const updateReservationSpy = vi.fn().mockResolvedValue({ id: 1, day_id: 7 });
+      seedStore(useTripStore, { updateReservation: updateReservationSpy } as any);
 
       renderPlannerPage(42);
 
@@ -1179,20 +1182,24 @@ describe('TripPlannerPage', () => {
         expect(screen.getByTestId('reservations-panel')).toBeInTheDocument();
       });
 
-      // Set editingReservation via captured onEdit prop (inline lambda in JSX)
-      const fakeReservation = { id: 1, trip_id: 42, name: 'Test', type: 'restaurant', status: 'confirmed' };
+      // Edit a reservation that lives on day 7 (no day is selected — Book tab).
+      const fakeReservation = { id: 1, trip_id: 42, name: 'Test', type: 'other', status: 'confirmed', day_id: 7 };
       await act(async () => {
         capturedReservationsPanelProps.current.onEdit?.(fakeReservation);
       });
 
-      // Call onSave — now takes edit path (editingReservation is set)
       await act(async () => {
         await capturedReservationModalProps.current.onSave?.({
           name: 'Updated Booking',
-          type: 'restaurant',
+          type: 'tour',
           status: 'confirmed',
         });
       });
+
+      // The client must NOT send a day_id (no forcing to the selected day, no
+      // stale value) — the server keeps/derives it from the booking's date.
+      expect(updateReservationSpy).toHaveBeenCalled();
+      expect(updateReservationSpy.mock.calls[0][2]).not.toHaveProperty('day_id');
     });
   });
 

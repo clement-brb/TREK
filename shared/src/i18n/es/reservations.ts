@@ -37,8 +37,7 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Bicicleta',
   'reservations.type.taxi': 'Taxi',
   'reservations.type.transport_other': 'Otro',
-  'reservations.confirm.delete':
-    '¿Seguro que quieres eliminar la reserva "{name}"?',
+  'reservations.confirm.delete': '¿Seguro que quieres eliminar la reserva "{name}"?',
   'reservations.confirm.deleteTitle': '¿Eliminar reserva?',
   'reservations.confirm.deleteBody': '« {name} » se eliminará permanentemente.',
   'reservations.toast.updated': 'Reserva actualizada',
@@ -72,8 +71,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Categoría de presupuesto',
   'reservations.budgetCategoryPlaceholder': 'ej. Transporte, Alojamiento',
   'reservations.budgetCategoryAuto': 'Automático (según tipo de reserva)',
-  'reservations.budgetHint':
-    'Se creará automáticamente una entrada presupuestaria al guardar.',
+  'reservations.budgetHint': 'Se creará automáticamente una entrada presupuestaria al guardar.',
   'reservations.departureDate': 'Salida',
   'reservations.arrivalDate': 'Llegada',
   'reservations.departureTime': 'Hora salida',
@@ -94,8 +92,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Inicio',
   'reservations.span.end': 'Fin',
   'reservations.span.ongoing': 'En curso',
-  'reservations.validation.endBeforeStart':
-    'La fecha/hora de fin debe ser posterior a la de inicio',
+  'reservations.validation.endBeforeStart': 'La fecha/hora de fin debe ser posterior a la de inicio',
   'reservations.addBooking': 'Añadir reserva',
   'reservations.meta.airline': 'Aerolínea',
   'reservations.meta.flightNumber': 'N° de vuelo',
@@ -128,7 +125,8 @@ const reservations: TranslationStrings = {
   'reservations.import.cta': 'Importar desde archivo',
   'reservations.import.dropHere': 'Suelta los archivos de confirmación de reserva aquí o haz clic para seleccionar',
   'reservations.import.dropActive': 'Suelta los archivos para importar',
-  'reservations.import.acceptedFormats': 'Aceptados: EML, PDF, PKPass, HTML, TXT (máx. 10 MB por archivo, hasta 5 archivos)',
+  'reservations.import.acceptedFormats':
+    'Aceptados: EML, PDF, PKPass, HTML, TXT (máx. 10 MB por archivo, hasta 5 archivos)',
   'reservations.import.parsing': 'Analizando archivos…',
   'reservations.import.previewHeading': '{count} reserva(s) encontrada(s)',
   'reservations.import.previewEmpty': 'No se pudieron extraer reservas de los archivos subidos.',
@@ -144,7 +142,8 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.title': 'Importar desde AirTrail',
   'reservations.airtrail.cta': 'AirTrail',
   'reservations.airtrail.synced': 'AirTrail',
-  'reservations.airtrail.syncedHint': 'Sincronizado desde AirTrail: las ediciones se mantienen sincronizadas en ambos sentidos.',
+  'reservations.airtrail.syncedHint':
+    'Sincronizado desde AirTrail: las ediciones se mantienen sincronizadas en ambos sentidos.',
   'reservations.airtrail.notSynced': 'No sincronizado',
   'reservations.airtrail.notSyncedHint': 'Este vuelo se eliminó en AirTrail y ya no se sincroniza.',
   'reservations.airtrail.loadError': 'No se pudieron cargar tus vuelos de AirTrail.',
@@ -158,5 +157,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Otros vuelos',
   'reservations.airtrail.empty': 'No se encontraron vuelos en tu cuenta de AirTrail.',
   'reservations.airtrail.importCta': 'Importar {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

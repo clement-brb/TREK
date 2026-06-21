@@ -6,8 +6,7 @@ const reservations: TranslationStrings = {
   'reservations.emptyHint': 'Add reservations for flights, hotels and more',
   'reservations.add': 'Add Reservation',
   'reservations.addManual': 'Manual Booking',
-  'reservations.placeHint':
-    'Tip: Reservations are best created directly from a place to link them with your day plan.',
+  'reservations.placeHint': 'Tip: Reservations are best created directly from a place to link them with your day plan.',
   'reservations.confirmed': 'Confirmed',
   'reservations.pending': 'Pending',
   'reservations.summary': '{confirmed} confirmed, {pending} pending',
@@ -33,8 +32,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'Connection',
   'reservations.layover.layover': 'Layover',
   'reservations.needsReview': 'Review',
-  'reservations.needsReviewHint':
-    'Airport could not be matched automatically — please confirm the location.',
+  'reservations.needsReviewHint': 'Airport could not be matched automatically — please confirm the location.',
   'reservations.searchLocation': 'Search station, port, address…',
   'reservations.meta.trainNumber': 'Train No.',
   'reservations.meta.platform': 'Platform',
@@ -64,8 +62,7 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Bicycle',
   'reservations.type.taxi': 'Taxi',
   'reservations.type.transport_other': 'Other',
-  'reservations.confirm.delete':
-    'Are you sure you want to delete the reservation "{name}"?',
+  'reservations.confirm.delete': 'Are you sure you want to delete the reservation "{name}"?',
   'reservations.confirm.deleteTitle': 'Delete booking?',
   'reservations.confirm.deleteBody': '"{name}" will be permanently deleted.',
   'reservations.toast.updated': 'Reservation updated',
@@ -99,8 +96,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Budget category',
   'reservations.budgetCategoryPlaceholder': 'e.g. Transport, Accommodation',
   'reservations.budgetCategoryAuto': 'Auto (from booking type)',
-  'reservations.budgetHint':
-    'A budget entry will be created automatically when saving.',
+  'reservations.budgetHint': 'A budget entry will be created automatically when saving.',
   'reservations.departureDate': 'Departure',
   'reservations.arrivalDate': 'Arrival',
   'reservations.departureTime': 'Dep. time',
@@ -121,8 +117,7 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Start',
   'reservations.span.end': 'End',
   'reservations.span.ongoing': 'Ongoing',
-  'reservations.validation.endBeforeStart':
-    'End date/time must be after start date/time',
+  'reservations.validation.endBeforeStart': 'End date/time must be after start date/time',
   'reservations.addBooking': 'Add booking',
   'reservations.import.title': 'Import booking confirmations',
   'reservations.import.cta': 'Import from file',
@@ -158,5 +153,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Other flights',
   'reservations.airtrail.empty': 'No flights found in your AirTrail account.',
   'reservations.airtrail.importCta': 'Import {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

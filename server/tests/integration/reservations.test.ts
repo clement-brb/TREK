@@ -185,6 +185,44 @@ describe('Update reservation', () => {
     expect(res.body.reservation.confirmation_number).toBe('ABC123');
   });
 
+  it('RESV-004b — PUT with day_id null derives day_id from reservation_time so it stays in the Plan (#1237)', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+    createDay(testDb, trip.id, { date: '2025-09-01' });
+    const day2 = createDay(testDb, trip.id, { date: '2025-09-02' });
+    const resv = createReservation(testDb, trip.id, { title: 'Event', type: 'event' });
+
+    const res = await request(app)
+      .put(`/api/trips/${trip.id}/reservations/${resv.id}`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Event', type: 'event', day_id: null, reservation_time: '2025-09-02' });
+    expect(res.status).toBe(200);
+    expect(res.body.reservation.day_id).toBe(day2.id);
+  });
+
+  it('RESV-004c — re-dating a booking moves it to the matching day (start + end) (#1237)', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+    const day1 = createDay(testDb, trip.id, { date: '2025-10-01' });
+    const day3 = createDay(testDb, trip.id, { date: '2025-10-03' });
+
+    // Booking sits on day 1 (start + end).
+    const created = await request(app)
+      .post(`/api/trips/${trip.id}/reservations`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Event', type: 'event', day_id: day1.id, reservation_time: '2025-10-01T09:00', reservation_end_time: '2025-10-01T10:00' });
+    const rid = created.body.reservation.id;
+
+    // Re-date to day 3 WITHOUT sending day_id (the modal omits it) — both ends follow.
+    const res = await request(app)
+      .put(`/api/trips/${trip.id}/reservations/${rid}`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Event', type: 'event', reservation_time: '2025-10-03T00:00', reservation_end_time: '2025-10-03T14:00' });
+    expect(res.status).toBe(200);
+    expect(res.body.reservation.day_id).toBe(day3.id);
+    expect(res.body.reservation.end_day_id).toBe(day3.id);
+  });
+
   it('RESV-004 — PUT on non-existent reservation returns 404', async () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id);
@@ -382,7 +420,7 @@ describe('Reservation budget entry integration', () => {
     expect(items[0].total_price).toBe(150);
   });
 
-  it('RESV-014 — PUT without create_budget_entry removes existing linked budget item', async () => {
+  it('RESV-014 — PUT without create_budget_entry keeps the existing linked budget item', async () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id);
 
@@ -398,13 +436,13 @@ describe('Reservation budget entry integration', () => {
     expect(createRes.status).toBe(201);
     const resvId = createRes.body.reservation.id;
 
-    // Verify budget item exists
     const before = testDb
       .prepare('SELECT id FROM budget_items WHERE trip_id = ? AND reservation_id = ?')
       .get(trip.id, resvId);
     expect(before).toBeDefined();
 
-    // Update without create_budget_entry — should delete the linked budget item
+    // Update WITHOUT create_budget_entry — the booking edit must NOT touch its
+    // linked expense (expenses are managed from the Costs section now).
     const updateRes = await request(app)
       .put(`/api/trips/${trip.id}/reservations/${resvId}`)
       .set('Cookie', authCookie(user.id))
@@ -414,7 +452,81 @@ describe('Reservation budget entry integration', () => {
     const after = testDb
       .prepare('SELECT id FROM budget_items WHERE trip_id = ? AND reservation_id = ?')
       .get(trip.id, resvId);
+    expect(after).toBeDefined();
+  });
+
+  it('RESV-014b — PUT with create_budget_entry total_price 0 removes the linked budget item', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+
+    const createRes = await request(app)
+      .post(`/api/trips/${trip.id}/reservations`)
+      .set('Cookie', authCookie(user.id))
+      .send({
+        title: 'Taxi',
+        type: 'transport',
+        create_budget_entry: { total_price: 50, category: 'Transport' },
+      });
+    expect(createRes.status).toBe(201);
+    const resvId = createRes.body.reservation.id;
+
+    // Explicit clear (total_price 0) still removes the linked item.
+    const updateRes = await request(app)
+      .put(`/api/trips/${trip.id}/reservations/${resvId}`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Taxi', create_budget_entry: { total_price: 0 } });
+    expect(updateRes.status).toBe(200);
+
+    const after = testDb
+      .prepare('SELECT id FROM budget_items WHERE trip_id = ? AND reservation_id = ?')
+      .get(trip.id, resvId);
     expect(after).toBeUndefined();
+  });
+
+  it('RESV-014c — changing the booking type updates the linked expense category', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+
+    const createRes = await request(app)
+      .post(`/api/trips/${trip.id}/reservations`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Booking', type: 'other', create_budget_entry: { total_price: 50, category: 'other' } });
+    const resvId = createRes.body.reservation.id;
+
+    // Change the type other -> hotel (no create_budget_entry).
+    await request(app)
+      .put(`/api/trips/${trip.id}/reservations/${resvId}`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Booking', type: 'hotel' });
+
+    const item = testDb
+      .prepare('SELECT category FROM budget_items WHERE trip_id = ? AND reservation_id = ?')
+      .get(trip.id, resvId) as { category: string };
+    expect(item.category).toBe('accommodation');
+  });
+
+  it('RESV-014d — a manually-picked expense category survives a booking type change', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+
+    const createRes = await request(app)
+      .post(`/api/trips/${trip.id}/reservations`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Booking', type: 'other', create_budget_entry: { total_price: 50, category: 'other' } });
+    const resvId = createRes.body.reservation.id;
+
+    // Simulate a manual category pick in the Costs editor.
+    testDb.prepare('UPDATE budget_items SET category = ? WHERE trip_id = ? AND reservation_id = ?').run('fees', trip.id, resvId);
+
+    await request(app)
+      .put(`/api/trips/${trip.id}/reservations/${resvId}`)
+      .set('Cookie', authCookie(user.id))
+      .send({ title: 'Booking', type: 'hotel' });
+
+    const item = testDb
+      .prepare('SELECT category FROM budget_items WHERE trip_id = ? AND reservation_id = ?')
+      .get(trip.id, resvId) as { category: string };
+    expect(item.category).toBe('fees');
   });
 });
 

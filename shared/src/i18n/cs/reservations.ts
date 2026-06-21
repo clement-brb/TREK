@@ -6,8 +6,7 @@ const reservations: TranslationStrings = {
   'reservations.emptyHint': 'Přidejte rezervace letů, hotelů a dalších',
   'reservations.add': 'Přidat rezervaci',
   'reservations.addManual': 'Ruční rezervace',
-  'reservations.placeHint':
-    'Tip: Rezervace je nejlepší vytvářet přímo z místa – propojí se tak s denním plánem.',
+  'reservations.placeHint': 'Tip: Rezervace je nejlepší vytvářet přímo z místa – propojí se tak s denním plánem.',
   'reservations.confirmed': 'Potvrzeno',
   'reservations.pending': 'Čeká na potvrzení',
   'reservations.summary': '{confirmed} potvrzených, {pending} čekajících',
@@ -33,8 +32,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'Přípoj',
   'reservations.layover.layover': 'Mezipřistání',
   'reservations.needsReview': 'Zkontrolovat',
-  'reservations.needsReviewHint':
-    'Letiště nebylo možné automaticky rozpoznat — potvrďte prosím místo.',
+  'reservations.needsReviewHint': 'Letiště nebylo možné automaticky rozpoznat — potvrďte prosím místo.',
   'reservations.searchLocation': 'Hledat stanici, přístav, adresu...',
   'reservations.meta.trainNumber': 'Číslo vlaku',
   'reservations.meta.platform': 'Nástupiště',
@@ -98,8 +96,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'Kategorie rozpočtu',
   'reservations.budgetCategoryPlaceholder': 'např. Doprava, Ubytování',
   'reservations.budgetCategoryAuto': 'Auto (podle typu rezervace)',
-  'reservations.budgetHint':
-    'Při ukládání bude automaticky vytvořena položka rozpočtu.',
+  'reservations.budgetHint': 'Při ukládání bude automaticky vytvořena položka rozpočtu.',
   'reservations.departureDate': 'Odlet',
   'reservations.arrivalDate': 'Přílet',
   'reservations.departureTime': 'Čas odletu',
@@ -120,14 +117,14 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'Začátek',
   'reservations.span.end': 'Konec',
   'reservations.span.ongoing': 'Probíhá',
-  'reservations.validation.endBeforeStart':
-    'Datum/čas konce musí být po datu/čase začátku',
+  'reservations.validation.endBeforeStart': 'Datum/čas konce musí být po datu/čase začátku',
   'reservations.addBooking': 'Přidat rezervaci',
   'reservations.import.title': 'Importovat potvrzení rezervace',
   'reservations.import.cta': 'Importovat ze souboru',
   'reservations.import.dropHere': 'Přetáhněte soubory s potvrzením rezervace sem nebo klikněte pro výběr',
   'reservations.import.dropActive': 'Pusťte soubory pro import',
-  'reservations.import.acceptedFormats': 'Přijímané formáty: EML, PDF, PKPass, HTML, TXT (max. 10 MB každý, až 5 souborů)',
+  'reservations.import.acceptedFormats':
+    'Přijímané formáty: EML, PDF, PKPass, HTML, TXT (max. 10 MB každý, až 5 souborů)',
   'reservations.import.parsing': 'Zpracování souborů…',
   'reservations.import.previewHeading': 'Nalezeno {count} rezervace/í',
   'reservations.import.previewEmpty': 'Z nahraných souborů se nepodařilo extrahovat žádné rezervace.',
@@ -157,5 +154,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'Ostatní lety',
   'reservations.airtrail.empty': 'Ve vašem účtu AirTrail nebyly nalezeny žádné lety.',
   'reservations.airtrail.importCta': 'Importovat {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;

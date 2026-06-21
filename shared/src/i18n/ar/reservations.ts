@@ -6,8 +6,7 @@ const reservations: TranslationStrings = {
   'reservations.emptyHint': 'أضف حجوزات للرحلات الجوية والفنادق وغير ذلك',
   'reservations.add': 'إضافة حجز',
   'reservations.addManual': 'حجز يدوي',
-  'reservations.placeHint':
-    'نصيحة: يُفضل إنشاء الحجوزات مباشرة من مكان لربطها بخطة اليوم.',
+  'reservations.placeHint': 'نصيحة: يُفضل إنشاء الحجوزات مباشرة من مكان لربطها بخطة اليوم.',
   'reservations.confirmed': 'مؤكد',
   'reservations.pending': 'قيد الانتظار',
   'reservations.summary': '{confirmed} مؤكدة، {pending} قيد الانتظار',
@@ -33,8 +32,7 @@ const reservations: TranslationStrings = {
   'reservations.layover.connection': 'رحلة متّصلة',
   'reservations.layover.layover': 'توقف بيني',
   'reservations.needsReview': 'مراجعة',
-  'reservations.needsReviewHint':
-    'تعذّر مطابقة المطار تلقائياً — يرجى تأكيد الموقع.',
+  'reservations.needsReviewHint': 'تعذّر مطابقة المطار تلقائياً — يرجى تأكيد الموقع.',
   'reservations.searchLocation': 'ابحث عن محطة، ميناء، عنوان...',
   'reservations.meta.trainNumber': 'رقم القطار',
   'reservations.meta.platform': 'المنصة',
@@ -98,8 +96,7 @@ const reservations: TranslationStrings = {
   'reservations.budgetCategory': 'فئة الميزانية',
   'reservations.budgetCategoryPlaceholder': 'مثال: المواصلات، الإقامة',
   'reservations.budgetCategoryAuto': 'تلقائي (حسب نوع الحجز)',
-  'reservations.budgetHint':
-    'سيتم إنشاء إدخال في الميزانية تلقائيًا عند الحفظ.',
+  'reservations.budgetHint': 'سيتم إنشاء إدخال في الميزانية تلقائيًا عند الحفظ.',
   'reservations.departureDate': 'المغادرة',
   'reservations.arrivalDate': 'الوصول',
   'reservations.departureTime': 'وقت المغادرة',
@@ -120,14 +117,14 @@ const reservations: TranslationStrings = {
   'reservations.span.start': 'البداية',
   'reservations.span.end': 'النهاية',
   'reservations.span.ongoing': 'جارٍ',
-  'reservations.validation.endBeforeStart':
-    'يجب أن يكون تاريخ/وقت الانتهاء بعد تاريخ/وقت البدء',
+  'reservations.validation.endBeforeStart': 'يجب أن يكون تاريخ/وقت الانتهاء بعد تاريخ/وقت البدء',
   'reservations.addBooking': 'إضافة حجز',
   'reservations.import.title': 'استيراد تأكيدات الحجز',
   'reservations.import.cta': 'استيراد من ملف',
   'reservations.import.dropHere': 'أسقط ملفات تأكيد الحجز هنا أو انقر للتحديد',
   'reservations.import.dropActive': 'أسقط الملفات للاستيراد',
-  'reservations.import.acceptedFormats': 'المقبول: EML، PDF، PKPass، HTML، TXT (بحد أقصى 10 ميغابايت لكل ملف، حتى 5 ملفات)',
+  'reservations.import.acceptedFormats':
+    'المقبول: EML، PDF، PKPass، HTML، TXT (بحد أقصى 10 ميغابايت لكل ملف، حتى 5 ملفات)',
   'reservations.import.parsing': 'جارٍ معالجة الملفات…',
   'reservations.import.previewHeading': 'تم العثور على {count} حجز/حجوزات',
   'reservations.import.previewEmpty': 'تعذّر استخراج أي حجوزات من الملفات المُحمَّلة.',
@@ -157,5 +154,10 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.otherFlights': 'رحلات أخرى',
   'reservations.airtrail.empty': 'لم يتم العثور على أي رحلات في حساب AirTrail الخاص بك.',
   'reservations.airtrail.importCta': 'استيراد {count}',
+  'reservations.costsLabel': 'Costs',
+  'reservations.createExpense': 'Create expense',
+  'reservations.createExpenseHint': 'Saves the booking, then opens the Costs editor.',
+  'reservations.linkedExpense': 'Linked expense',
+  'reservations.removeExpense': 'Remove expense',
 };
 export default reservations;
