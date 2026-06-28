@@ -268,6 +268,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Jak aktualizovat',
   'admin.update.dockerText':
     'Váš TREK běží v Dockeru. Pro aktualizaci na verzi {version} spusťte na svém serveru tyto příkazy:',
+  'admin.update.nonDockerText':
+    'Tato instance TREK neběží v Dockeru. Pro aktualizaci na verzi {version} znovu spusťte instalační nebo aktualizační metodu, kterou jste použili — například u Proxmox Community Scripts spusťte aktualizaci z konzole LXC:',
+  'admin.update.wikiLink': 'Otevřít průvodce aktualizací',
   'admin.update.reloadHint': 'Prosím obnovte stránku za několik sekund.',
   'admin.tabs.permissions': 'Oprávnění',
   'admin.notifications.emailPanel.title': 'Email (SMTP)',
@@ -337,6 +340,7 @@ const admin: TranslationStrings = {
     'Výchozí mapa pro všechny uživatele na této instanci. Každý uživatel ji může i nadále změnit ve svém vlastním nastavení.',
   'admin.defaultSettings.providerLeaflet': 'Standardní (zdarma)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Sdílený token Mapbox',
   'admin.defaultSettings.mapboxTokenHint':
     'Použije se pro každého uživatele, který nezadal vlastní token — takže celá instance získá Mapbox, aniž byste klíč sdíleli s každým zvlášť. Ukládá se šifrovaně.',

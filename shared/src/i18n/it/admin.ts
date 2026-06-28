@@ -272,6 +272,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Come aggiornare',
   'admin.update.dockerText':
     'La tua istanza TREK è in esecuzione in Docker. Per aggiornare alla versione {version}, esegui i seguenti comandi sul tuo server:',
+  'admin.update.nonDockerText':
+    "Questa istanza TREK non è in esecuzione in Docker. Per aggiornare alla versione {version}, riesegui il metodo di installazione o aggiornamento che hai usato — ad esempio, su Proxmox Community Scripts esegui l'aggiornamento dalla console LXC:",
+  'admin.update.wikiLink': "Apri la guida all'aggiornamento",
   'admin.update.reloadHint': 'Ricarica la pagina tra qualche secondo.',
   'admin.tabs.permissions': 'Permessi',
   'admin.notifications.emailPanel.title': 'Email (SMTP)',
@@ -343,6 +346,7 @@ const admin: TranslationStrings = {
     'La mappa predefinita per tutti gli utenti di questa istanza. Ogni utente può comunque sostituirla nelle proprie impostazioni.',
   'admin.defaultSettings.providerLeaflet': 'Standard (gratuito)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Token Mapbox condiviso',
   'admin.defaultSettings.mapboxTokenHint':
     "Usato per ogni utente che non ha inserito un proprio token — così tutta l'istanza ottiene Mapbox senza dover condividere la chiave individualmente. Archiviato in forma crittografata.",

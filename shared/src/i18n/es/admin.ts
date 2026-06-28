@@ -256,6 +256,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Cómo actualizar',
   'admin.update.dockerText':
     'Tu instancia de TREK se ejecuta en Docker. Para actualizar a {version}, ejecuta los siguientes comandos en tu servidor:',
+  'admin.update.nonDockerText':
+    'Esta instancia de TREK no se ejecuta en Docker. Para actualizar a {version}, vuelve a ejecutar el método de instalación o actualización que utilizaste; por ejemplo, en Proxmox Community Scripts ejecuta la actualización desde la consola LXC:',
+  'admin.update.wikiLink': 'Abrir la guía de actualización',
   'admin.update.reloadHint': 'Recarga la página en unos segundos.',
   'admin.addons.catalog.memories.name': 'Fotos (Immich)',
   'admin.addons.catalog.memories.description': 'Comparte fotos de viaje a través de tu instancia de Immich',
@@ -348,6 +351,7 @@ const admin: TranslationStrings = {
     'El mapa predeterminado para todos en esta instancia. Cada usuario puede cambiarlo en sus propios ajustes.',
   'admin.defaultSettings.providerLeaflet': 'Estándar (gratis)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Token de Mapbox compartido',
   'admin.defaultSettings.mapboxTokenHint':
     'Se usa para cada usuario que no haya introducido su propio token, de modo que toda la instancia obtenga Mapbox sin compartir la clave individualmente. Se almacena cifrado.',

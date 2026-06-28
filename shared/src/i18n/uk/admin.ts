@@ -270,6 +270,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Як оновити',
   'admin.update.dockerText':
     'Ваш екземпляр TREK працює в Docker. Для оновлення до {version} виконайте ці команди на сервері:',
+  'admin.update.nonDockerText':
+    'Цей екземпляр TREK не працює в Docker. Щоб оновити до {version}, повторно запустіть метод встановлення або оновлення, який ви використовували, — наприклад, у Proxmox Community Scripts запустіть оновлення з консолі LXC:',
+  'admin.update.wikiLink': 'Відкрити інструкцію з оновлення',
   'admin.update.reloadHint': 'Перезавантажте сторінку через кілька секунд.',
   'admin.tabs.permissions': 'Дозволи',
   'admin.notifications.emailPanel.title': 'Email (SMTP)',
@@ -342,6 +345,7 @@ const admin: TranslationStrings = {
     'Карта за замовчуванням для всіх на цьому екземплярі. Кожен користувач може змінити її у власних налаштуваннях.',
   'admin.defaultSettings.providerLeaflet': 'Стандартна (безкоштовна)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Спільний токен Mapbox',
   'admin.defaultSettings.mapboxTokenHint':
     'Використовується для кожного користувача, який не ввів власний токен — щоб увесь екземпляр отримав Mapbox без потреби ділитися ключем окремо. Зберігається в зашифрованому вигляді.',

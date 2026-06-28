@@ -317,6 +317,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Nasıl Güncellenir?',
   'admin.update.dockerText':
     "TREK örneğiniz Docker'da çalışır. {version} sürümüne güncellemek için sunucunuzda aşağıdaki komutları çalıştırın:",
+  'admin.update.nonDockerText':
+    'Bu TREK örneği Docker üzerinde çalışmıyor. {version} sürümüne güncellemek için kullandığınız kurulum veya güncelleme yöntemini yeniden çalıştırın — örneğin Proxmox Community Scripts kullanıyorsanız güncellemeyi LXC konsolundan çalıştırın:',
+  'admin.update.wikiLink': 'Güncelleme kılavuzunu aç',
   'admin.update.reloadHint': 'Lütfen birkaç saniye içinde sayfayı yeniden yükleyin.',
   'admin.tabs.permissions': 'İzinler',
   'admin.addons.catalog.journey.name': 'Seyahat',
@@ -346,6 +349,7 @@ const admin: TranslationStrings = {
     'Bu örnekteki herkes için varsayılan harita. Her kullanıcı bunu yine de kendi ayarlarında değiştirebilir.',
   'admin.defaultSettings.providerLeaflet': 'Standart (ücretsiz)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Paylaşılan Mapbox jetonu',
   'admin.defaultSettings.mapboxTokenHint':
     "Kendi jetonunu girmemiş her kullanıcı için kullanılır — böylece anahtarı tek tek paylaşmadan tüm örnek Mapbox'ı kullanır. Şifrelenmiş olarak saklanır.",

@@ -313,6 +313,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Cara Memperbarui',
   'admin.update.dockerText':
     'Instans TREK kamu berjalan di Docker. Untuk memperbarui ke {version}, jalankan perintah berikut di servermu:',
+  'admin.update.nonDockerText':
+    'Instans TREK ini tidak berjalan di Docker. Untuk memperbarui ke {version}, jalankan ulang metode instalasi atau pembaruan yang kamu gunakan — misalnya, pada Proxmox Community Scripts jalankan pembaruan dari konsol LXC:',
+  'admin.update.wikiLink': 'Buka panduan pembaruan',
   'admin.update.reloadHint': 'Muat ulang halaman dalam beberapa detik.',
   'admin.tabs.permissions': 'Izin',
   'admin.addons.catalog.journey.name': 'Journey',
@@ -340,6 +343,7 @@ const admin: TranslationStrings = {
     'Peta default untuk semua orang di instance ini. Setiap pengguna tetap dapat menggantinya di pengaturan masing-masing.',
   'admin.defaultSettings.providerLeaflet': 'Standar (gratis)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Token Mapbox bersama',
   'admin.defaultSettings.mapboxTokenHint':
     'Digunakan untuk setiap pengguna yang belum memasukkan token mereka sendiri — sehingga seluruh instance mendapatkan Mapbox tanpa perlu membagikan kunci satu per satu. Disimpan dalam bentuk terenkripsi.',

@@ -241,6 +241,9 @@ const admin: TranslationStrings = {
   'admin.update.backupLink': 'Ir para Backup',
   'admin.update.howTo': 'Como atualizar',
   'admin.update.dockerText': 'Sua instância TREK roda no Docker. Para atualizar para {version}, execute no servidor:',
+  'admin.update.nonDockerText':
+    'Esta instância do TREK não está rodando no Docker. Para atualizar para {version}, execute novamente o método de instalação ou atualização que você usou — por exemplo, no Proxmox Community Scripts, execute a atualização a partir do console do LXC:',
+  'admin.update.wikiLink': 'Abrir o guia de atualização',
   'admin.update.reloadHint': 'Recarregue a página em alguns segundos.',
   'admin.tabs.permissions': 'Permissões',
   'admin.tabs.mcpTokens': 'Acesso MCP',
@@ -339,6 +342,7 @@ const admin: TranslationStrings = {
     'O mapa padrão para todos nesta instância. Cada usuário ainda pode substituí-lo nas próprias configurações.',
   'admin.defaultSettings.providerLeaflet': 'Padrão (gratuito)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Token compartilhado do Mapbox',
   'admin.defaultSettings.mapboxTokenHint':
     'Usado para todos os usuários que não inseriram o próprio token — assim toda a instância usa o Mapbox sem compartilhar a chave individualmente. Armazenado de forma criptografada.',

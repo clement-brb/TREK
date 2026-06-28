@@ -274,6 +274,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Comment mettre à jour',
   'admin.update.dockerText':
     'Votre instance TREK fonctionne dans Docker. Pour mettre à jour vers {version}, exécutez les commandes suivantes sur votre serveur :',
+  'admin.update.nonDockerText':
+    "Cette instance TREK ne fonctionne pas dans Docker. Pour mettre à jour vers {version}, relancez la méthode d'installation ou de mise à jour que vous avez utilisée — par exemple, sur Proxmox Community Scripts, lancez la mise à jour depuis la console LXC :",
+  'admin.update.wikiLink': 'Ouvrir le guide de mise à jour',
   'admin.update.reloadHint': 'Veuillez recharger la page dans quelques secondes.',
   'admin.tabs.permissions': 'Permissions',
   'admin.notifications.emailPanel.title': 'Email (SMTP)',
@@ -345,6 +348,7 @@ const admin: TranslationStrings = {
     'La carte par défaut pour tous les utilisateurs de cette instance. Chaque utilisateur peut toujours la remplacer dans ses propres paramètres.',
   'admin.defaultSettings.providerLeaflet': 'Standard (gratuit)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Jeton Mapbox partagé',
   'admin.defaultSettings.mapboxTokenHint':
     "Utilisé pour chaque utilisateur n'ayant pas saisi son propre jeton — ainsi toute l'instance bénéficie de Mapbox sans partager la clé individuellement. Stocké de façon chiffrée.",

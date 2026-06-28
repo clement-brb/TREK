@@ -305,6 +305,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': '업데이트 방법',
   'admin.update.dockerText':
     'TREK 인스턴스가 Docker에서 실행 중입니다. {version}으로 업데이트하려면 서버에서 다음 명령을 실행하세요:',
+  'admin.update.nonDockerText':
+    '이 TREK 인스턴스는 Docker에서 실행되고 있지 않습니다. {version}으로 업데이트하려면 사용했던 설치 또는 업데이트 방법을 다시 실행하세요 — 예를 들어 Proxmox Community Scripts에서는 LXC 콘솔에서 업데이트를 실행하세요:',
+  'admin.update.wikiLink': '업데이트 가이드 열기',
   'admin.update.reloadHint': '잠시 후 페이지를 새로 고침하세요.',
   'admin.tabs.permissions': '권한',
   'admin.addons.catalog.journey.name': 'Journey',
@@ -331,6 +334,7 @@ const admin: TranslationStrings = {
     '이 인스턴스의 모든 사용자에게 적용되는 기본 지도입니다. 각 사용자는 자신의 설정에서 이를 변경할 수 있습니다.',
   'admin.defaultSettings.providerLeaflet': '표준 (무료)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': '공유 Mapbox 토큰',
   'admin.defaultSettings.mapboxTokenHint':
     '자신의 토큰을 입력하지 않은 모든 사용자에게 사용됩니다 — 키를 개별적으로 공유하지 않아도 인스턴스 전체에서 Mapbox를 사용할 수 있습니다. 암호화하여 저장됩니다.',

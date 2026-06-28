@@ -265,6 +265,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Jak zaktualizować',
   'admin.update.dockerText':
     'Twoja instancja TREK działa w Dockerze. Aby zaktualizować do {version}, uruchom następujące polecenia na swoim serwerze:',
+  'admin.update.nonDockerText':
+    'Ta instancja TREK nie działa w Dockerze. Aby zaktualizować do {version}, uruchom ponownie metodę instalacji lub aktualizacji, której użyłeś — na przykład w Proxmox Community Scripts uruchom aktualizację z konsoli LXC:',
+  'admin.update.wikiLink': 'Otwórz przewodnik aktualizacji',
   'admin.update.reloadHint': 'Proszę odświeżyć stronę za kilka sekund.',
   'admin.notifications.title': 'Powiadomienia',
   'admin.notifications.hint': 'Wybierz jeden kanał powiadomień.',
@@ -347,6 +350,7 @@ const admin: TranslationStrings = {
     'Domyślna mapa dla wszystkich na tej instancji. Każdy użytkownik może ją zmienić we własnych ustawieniach.',
   'admin.defaultSettings.providerLeaflet': 'Standardowa (bezpłatna)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Współdzielony token Mapbox',
   'admin.defaultSettings.mapboxTokenHint':
     'Używany dla każdego użytkownika, który nie wprowadził własnego tokena — dzięki temu cała instancja korzysta z Mapbox bez udostępniania klucza każdemu z osobna. Przechowywany w postaci zaszyfrowanej.',

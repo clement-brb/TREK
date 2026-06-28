@@ -273,6 +273,9 @@ const admin: TranslationStrings = {
   'admin.update.howTo': 'Frissítési útmutató',
   'admin.update.dockerText':
     'A TREK példányod Dockerben fut. A {version} verzióra frissítéshez futtasd a következő parancsokat a szervereden:',
+  'admin.update.nonDockerText':
+    'Ez a TREK példány nem Dockerben fut. A {version} verzióra frissítéshez futtasd újra a telepítési vagy frissítési módszert, amelyet használtál — például Proxmox Community Scripts esetén futtasd a frissítést az LXC konzolból:',
+  'admin.update.wikiLink': 'Frissítési útmutató megnyitása',
   'admin.update.reloadHint': 'Kérjük, töltsd újra az oldalt néhány másodperc múlva.',
   'admin.tabs.permissions': 'Jogosultságok',
   'admin.notifications.emailPanel.title': 'Email (SMTP)',
@@ -344,6 +347,7 @@ const admin: TranslationStrings = {
     'Az alapértelmezett térkép mindenkinek ezen a példányon. Minden felhasználó felülírhatja a saját beállításaiban.',
   'admin.defaultSettings.providerLeaflet': 'Alapértelmezett (ingyenes)',
   'admin.defaultSettings.providerMapbox': 'Mapbox (3D)',
+  'admin.defaultSettings.providerMapLibre': 'MapLibre (OpenFreeMap)',
   'admin.defaultSettings.mapboxToken': 'Megosztott Mapbox-token',
   'admin.defaultSettings.mapboxTokenHint':
     'Minden olyan felhasználóhoz használatos, aki nem adta meg a saját tokenjét — így az egész példány eléri a Mapboxot anélkül, hogy egyenként kellene megosztani a kulcsot. Titkosítva tárolódik.',
